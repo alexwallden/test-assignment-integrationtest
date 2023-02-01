@@ -10,18 +10,16 @@ describe('test function handleSubmit', () => {
   test('should print HTML correctly', async () => {
     document.body.innerHTML = /*html*/`
     <form id="searchForm">
-      <input type="text" id="searchText" placeholder="Skriv titel här" value="" />
+      <input type="text" id="searchText" placeholder="Skriv titel här" value="BBB" />
       <button type="submit" id="search">Sök</button>
     </form>
     <div id="movie-container"></div>
     `;
 
-    await handleSubmit();
+    await handleSubmit();  
 
     const heading = document.getElementById('movie-container')?.children[0].children[0];
-    console.log(heading?.innerHTML);
 
     expect(heading?.innerHTML).toBe('Bamse');
-  })
-
-})
+  });
+});
