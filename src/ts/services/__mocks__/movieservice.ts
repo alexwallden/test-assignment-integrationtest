@@ -5,17 +5,9 @@ import axios from "axios";
 export const getData = async (searchText: string): Promise<IMovie[]> => {
   return new Promise((resolve, reject) => {
     if (searchText !== '') {
-      resolve([{ Title: 'Bamse', imdbID: '1', Poster: '', Type: 'Horror', Year: '1987' }]);
+      resolve([{ Title: searchText, imdbID: '1', Poster: '', Type: 'Horror', Year: '1987' }]);
     } else {
-      resolve([{ Title: 'Rejected', imdbID: '1', Poster: '', Type: 'Horror', Year: '1987' }]);
+      reject([]);
     }
-  })
-  // return axios
-  //   .get<IOmdbResponse>("http://omdbapi.com/?apikey=416ed51a&s=" + searchText)
-  //   .then((data) => {
-  //     return data.data.Search;
-  //   })
-  //   .catch(() => {
-  //     return [];
-  //   });
+  });
 };

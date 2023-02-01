@@ -1,10 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
-import { AxiosResponse } from "axios";
-import { IOmdbResponse } from "../ts/models/IOmdbResponse";
-import { IMovie } from "../ts/models/Movie";
 import { getData } from "../ts/services/movieservice";
 
 const response = { data: { Search: [{ Title: 'Die Hard', imdbID: '1', Poster: '', Type: 'Action', Year: '1988' }] } };
@@ -12,15 +5,27 @@ const response = { data: { Search: [{ Title: 'Die Hard', imdbID: '1', Poster: ''
 jest.mock("axios", () => ({
   get: async (url: string) => {
     return new Promise((resolve, reject) => {
-      resolve(response);
+      if (url.endsWith('Die Hard')) {
+        resolve(response);
+      } else {
+        reject([]);
+      }
     });
   }
 }));
 
-test('should fetch data correctly', async () => {
-  let data: IMovie[] = await getData('Die Hard');
+describe('test function getData', () => {
 
-  console.log(data);
+  test('should fetch data correctly', async () => {
+    const data = await getData('Die Hard');
 
-  expect(data.length).toBe(1);
+    expect(data.length).toBe(1);
+  });
+
+  test('should fail fetching data', async () => {
+      const data = await getData('error');
+
+      expect(data.length).toBe(0);
+  });
+  
 });
