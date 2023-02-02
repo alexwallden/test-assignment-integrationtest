@@ -61,7 +61,7 @@ describe('test function moviesSort', () => {
 
     expect(movies[0].Title).toBe('Aliens');
     expect(movies[3].imdbID).toBe('2');
-    expect(JSON.stringify(firstLetters)).toBe("[\"A\",\"C\",\"C\",\"D\",\"D\",\"H\"]");
+    expect(firstLetters).toEqual(['A', 'C', 'C', 'D', 'D', 'H']);
   });
   test('should sort array in ascending order', () => {
     const movies = [...defaultMovies];
@@ -76,7 +76,7 @@ describe('test function moviesSort', () => {
 
     expect(movies[0].Title).toBe('Harry Potter');
     expect(movies[1].imdbID).toBe('2');
-    expect(JSON.stringify(firstLetters)).toBe("[\"H\",\"D\",\"D\",\"C\",\"C\",\"A\"]");
+    expect(firstLetters).toEqual(['H', 'D', 'D', 'C', 'C', 'A']);
   });
   
 });
