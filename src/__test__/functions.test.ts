@@ -1,13 +1,13 @@
 import { movieSort } from "../ts/functions"
 import { IMovie } from "../ts/models/Movie"
 
-const movies: IMovie[] = [
+const defaultMovies: IMovie[] = [
   {
-    Title: 'Harry Potter',
-    imdbID: '1',
+    Title: 'Aliens',
+    imdbID: '4',
     Poster: '',
-    Type: 'Fantasy',
-    Year: '2001'
+    Type: 'Sci-Fi',
+    Year: '1979'
   },
   {
     Title: 'Die Hard',
@@ -17,19 +17,20 @@ const movies: IMovie[] = [
     Year: '1988'
   },
   {
+    Title: 'Harry Potter',
+    imdbID: '1',
+    Poster: '',
+    Type: 'Fantasy',
+    Year: '2001'
+  },
+  {
     Title: 'Die Hard',
     imdbID: '3',
     Poster: '',
     Type: 'Action',
     Year: '1995'
   },
-  {
-    Title: 'Aliens',
-    imdbID: '4',
-    Poster: '',
-    Type: 'Sci-Fi',
-    Year: '1979'
-  },
+  
   {
     Title: 'Cliffhanger',
     imdbID: '5',
@@ -48,6 +49,7 @@ const movies: IMovie[] = [
 
 describe('test function moviesSort', () => {
   test('should sort array in descending order', () => {
+    const movies = [...defaultMovies];
     const firstLetters: string[] = [];
     movieSort(movies);
 
@@ -62,6 +64,7 @@ describe('test function moviesSort', () => {
     expect(JSON.stringify(firstLetters)).toBe("[\"A\",\"C\",\"C\",\"D\",\"D\",\"H\"]");
   });
   test('should sort array in ascending order', () => {
+    const movies = [...defaultMovies];
     const firstLetters: string[] = [];
     movieSort(movies, false);
 
