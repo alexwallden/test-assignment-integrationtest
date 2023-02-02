@@ -56,7 +56,6 @@ describe('test function handleSubmit', () => {
     </form>
     <div id="movie-container"></div>
     `;
-
     const spy = jest.spyOn(movieApp, 'displayNoResult').mockReturnValue();
 
     await movieApp.handleSubmit();
@@ -77,7 +76,7 @@ describe('test function init', () => {
     <div id="movie-container"></div>
     `;
     const form = document.getElementById("searchForm") as HTMLFormElement;
-    const spy = jest.spyOn(movieApp, 'handleSubmit');
+    const spy = jest.spyOn(movieApp, 'handleSubmit').mockReturnValue(new Promise<void>((resolve) => resolve()));
     movieApp.init();
     form.submit();
 
