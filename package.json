@@ -25,6 +25,7 @@
     "coverageReporters": [
       "html",
       "text"
-    ]
+    ],
+    "silent": false
   }
 }
