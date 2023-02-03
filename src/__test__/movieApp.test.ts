@@ -62,7 +62,7 @@ describe('test function handleSubmit', () => {
 
     expect(spy).toHaveBeenCalledTimes(1);
     spy.mockRestore();
-  })
+  });
 
 });
 
