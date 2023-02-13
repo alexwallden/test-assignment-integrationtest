@@ -12,6 +12,23 @@ beforeEach(() => {
 })
 
 describe('test function handleSubmit', () => {
+  test('should render movie with movies title', async () => {
+    const searchText = 'Harry Potter'
+    document.body.innerHTML = /*html*/`
+    <form id="searchForm">
+      <input type="text" id="searchText" placeholder="Skriv titel här" value="${searchText}" />
+      <button type="submit" id="search">Sök</button>
+    </form>
+    <div id="movie-container"></div>
+    `;
+
+    await movieApp.handleSubmit();
+
+    const movie = (document.getElementById('movie-container') as HTMLDivElement).children[0];
+    const heading = movie.children[0];
+    expect(heading.innerHTML).toBe(searchText);
+  });
+  
   test('should call function createHtml', async () => {
     const searchText = 'Harry Potter'
     document.body.innerHTML = /*html*/`
